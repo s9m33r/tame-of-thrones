@@ -1,18 +1,23 @@
 package inc.hokage.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+import static java.util.Objects.isNull;
 
 public class Kingdom {
 
     private String name;
     private String emblem;
+    private Map<Character, Integer> emblemCharactersCountMap;
     private King king;
-    private Set<Kingdom> allies = new HashSet<>();
 
     public Kingdom(String name, String emblem){
         this.name = name;
         this.emblem = emblem;
+
+        emblemCharactersCountMap = buildCharactersCountMap(emblem);
     }
 
     public King getKing() {
@@ -23,24 +28,33 @@ public class Kingdom {
         this.king = king;
     }
 
-    public void setAllegianceWith(Kingdom kingdom) {
-        allies.add(kingdom);
-        kingdom.addAlly(this);
-    }
-
-    private void addAlly(Kingdom kingdom) {
-        allies.add(kingdom);
-    }
-
-    public Set<Kingdom> getAllies() {
-        return allies;
-    }
-
-    public int getAlliesCount() {
-        return allies.size();
-    }
-
     public boolean isMessageHonourable(String message) {
-        return true;
+        Map<Character, Integer> messageCharacterCountMap = buildCharactersCountMap(message);
+
+        Optional<Character> violatingCharacter = emblemCharactersCountMap.
+                keySet().stream().
+                filter(character->
+                isViolatingCharacter(messageCharacterCountMap, character)).
+                findAny();
+
+        return !violatingCharacter.isPresent();
+    }
+
+    private Map<Character, Integer> buildCharactersCountMap(String emblem) {
+        Map<Character, Integer> characterCountMap = new HashMap<>();
+
+        for(char character: emblem.toLowerCase().toCharArray()){
+            characterCountMap.putIfAbsent(character, 0);
+
+            characterCountMap.put(character, characterCountMap.get(character) + 1);
+        }
+
+        return characterCountMap;
+    }
+
+    private boolean isViolatingCharacter(Map<Character, Integer> messageCharacterCountMap, Character character) {
+        return isNull(messageCharacterCountMap.get(character)) ||
+        emblemCharactersCountMap.get(character) >
+        messageCharacterCountMap.get(character);
     }
 }

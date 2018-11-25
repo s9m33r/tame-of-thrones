@@ -29,7 +29,7 @@ public class UniverseTest {
     @Test
     public void shouldAnswerTheQuestionWhoAreTheAllies(){
         King kingShan = new King("Shan", new Kingdom("A Kingdom", "A Emblem"));
-        Set<Kingdom> allies = universe.whoAreTheAlliesOf(kingShan);
+        Set<Kingdom> allies = kingShan.getAllies();
 
         Assert.assertTrue(allies.isEmpty());
     }
@@ -48,15 +48,15 @@ public class UniverseTest {
         universe.addKingdom(bKingdom);
         universe.addKingdom(cKingdom);
 
-        bKingdom.setAllegianceWith(aKingdom);
-        cKingdom.setAllegianceWith(aKingdom);
+        aKing.sendAllegianceInvitation("B Emblem", bKing);
+        aKing.sendAllegianceInvitation("C Emblem", cKing);
 
         Optional<King> king = universe.whoIsTheRuler();
 
         assertTrue(king.isPresent());
         assertEquals(aKingdom.getKing(), king.get());
 
-        Set<Kingdom> alliesOfTheKing = universe.whoAreTheAlliesOf(king.get());
+        Set<Kingdom> alliesOfTheKing = king.get().getAllies();
         assertEquals(2, alliesOfTheKing.size());
         assertTrue(alliesOfTheKing.contains(bKingdom));
         assertTrue(alliesOfTheKing.contains(cKingdom));

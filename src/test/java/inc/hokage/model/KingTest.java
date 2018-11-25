@@ -2,6 +2,7 @@ package inc.hokage.model;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class KingTest {
@@ -16,25 +17,25 @@ public class KingTest {
 
         oneKing.sendAllegianceInvitation("Because we need Emblem", anotherKing);
 
-        assertTrue(oneKing.getKingdom().getAllies().
+        assertTrue(oneKing.getAllies().
                 contains(anotherKing.getKingdom()));
-        assertTrue(anotherKing.getKingdom().getAllies().
+        assertTrue(anotherKing.getAllies().
                 contains(oneKing.getKingdom()));
     }
 
     @Test
-    public void givenAKingReceivesAnInAppropriateMessageItsKingdomShouldNotPledgeAllegiance(){
+    public void givenAKingReceivesAnInappropriateMessageItsKingdomShouldNotPledgeAllegiance(){
         Kingdom aKingdom = new Kingdom("A Kingdom", "A Emblem");
         Kingdom bKingdom = new Kingdom("B Kingdom", "B Emblem");
 
         King oneKing = new King("One King", aKingdom);
         King anotherKing = new King("Another King", bKingdom);
 
-        oneKing.sendAllegianceInvitation("Because we need Emblem", anotherKing);
+        oneKing.sendAllegianceInvitation("We don't honour your kingdom", anotherKing);
 
-        assertTrue(oneKing.getKingdom().getAllies().
+        assertFalse(oneKing.getAllies().
                 contains(anotherKing.getKingdom()));
-        assertTrue(anotherKing.getKingdom().getAllies().
+        assertFalse(anotherKing.getAllies().
                 contains(oneKing.getKingdom()));
     }
 }

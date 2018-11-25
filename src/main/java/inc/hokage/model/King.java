@@ -1,8 +1,13 @@
 package inc.hokage.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class King {
     private String name;
     private Kingdom kingdom;
+    private Set<Kingdom> allies = new HashSet<>();
+
 
     public King(String name, Kingdom kingdom){
         this.name = name;
@@ -14,12 +19,28 @@ public class King {
         return kingdom;
     }
 
-    public void sendAllegianceInvitation(String message, King toKing) {
-        if(toKing.doYouAcceptOurAllegiance(message))
-            kingdom.setAllegianceWith(toKing.kingdom);
+    public Set<Kingdom> getAllies() {
+        return allies;
     }
 
-    private boolean doYouAcceptOurAllegiance(String message) {
-        return kingdom.isMessageHonourable(message);
+    public int alliesCount() {
+        return allies.size();
+    }
+
+    public void sendAllegianceInvitation(String message, King toKing) {
+        if(toKing.willYouPledgeYourAllegiance(message, this))
+            setAllegianceWith(toKing.kingdom);
+    }
+
+    private boolean willYouPledgeYourAllegiance(String message, King fromKing) {
+        if(kingdom.isMessageHonourable(message)) {
+            setAllegianceWith(fromKing.kingdom);
+            return true;
+        }else
+            return false;
+    }
+
+    private void setAllegianceWith(Kingdom kingdom) {
+        allies.add(kingdom);
     }
 }
