@@ -8,11 +8,14 @@ public class King {
     private Kingdom kingdom;
     private Set<Kingdom> allies = new HashSet<>();
 
-
     public King(String name, Kingdom kingdom){
         this.name = name;
         this.kingdom = kingdom;
         kingdom.makeKing(this);
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Kingdom getKingdom() {

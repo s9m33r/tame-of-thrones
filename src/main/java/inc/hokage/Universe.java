@@ -9,10 +9,6 @@ public class Universe {
 
     private Set<Kingdom> kingdoms = new HashSet<>();
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
-
     public Optional<King> whoIsTheRuler() {
         Optional<Kingdom> rulingKingdom = whichIsTheRulingKingdom();
 
