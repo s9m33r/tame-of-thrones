@@ -20,6 +20,10 @@ public class Kingdom {
         emblemCharactersCountMap = buildCharactersCountMap(emblem);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public King getKing() {
         return king;
     }
@@ -56,5 +60,22 @@ public class Kingdom {
         return isNull(messageCharacterCountMap.get(character)) ||
         emblemCharactersCountMap.get(character) >
         messageCharacterCountMap.get(character);
+    }
+
+    public boolean willPledgeAllegiance(String message, King king) {
+        if(isMessageHonourable(message)) {
+            this.king.getAllies().add(king.getKingdom());
+            return true;
+        } else
+            return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Kingdom{" +
+                "name='" + name + '\'' +
+                ", emblem='" + emblem + '\'' +
+                ", king=" + king +
+                '}';
     }
 }

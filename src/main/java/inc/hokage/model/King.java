@@ -35,6 +35,11 @@ public class King {
             setAllegianceWith(toKing.kingdom);
     }
 
+    public void sendAllegianceInvitation(String message, Kingdom toKingdom){
+        if(toKingdom.willPledgeAllegiance(message, this))
+            allies.add(toKingdom);
+    }
+
     private boolean willYouPledgeYourAllegiance(String message, King fromKing) {
         if(kingdom.isMessageHonourable(message)) {
             setAllegianceWith(fromKing.kingdom);
