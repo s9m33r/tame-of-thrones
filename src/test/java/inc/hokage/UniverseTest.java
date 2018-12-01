@@ -35,7 +35,7 @@ public class UniverseTest {
     }
 
     @Test
-    public void whenAKingHasSupportOfMoreThanHalfOfTheKingdomsHeShouldBeTheRuler(){
+    public void whenAKingHasSupportOfAtleastHalfOfTheKingdomsHeShouldBeTheRuler(){
         Kingdom aKingdom = new Kingdom("A Kingdom", "A Emblem");
         Kingdom bKingdom = new Kingdom("B Kingdom", "B Emblem");
         Kingdom cKingdom = new Kingdom("C Kingdom", "C Emblem");

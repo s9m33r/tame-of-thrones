@@ -9,6 +9,16 @@ public class Universe {
 
     private Set<Kingdom> kingdoms = new HashSet<>();
 
+    public void addKingdom(Kingdom kingdom) {
+        kingdoms.add(kingdom);
+    }
+
+    public Optional<Kingdom> getKingdomByName(String name) {
+        return kingdoms.stream().
+                filter(kingdom -> kingdom.getName().equalsIgnoreCase(name)).
+                findFirst();
+    }
+
     public Optional<King> whoIsTheRuler() {
         Optional<Kingdom> rulingKingdom = whichIsTheRulingKingdom();
 
@@ -31,14 +41,10 @@ public class Universe {
     }
 
     private boolean hasMajoritySupport(King kingWithMaximumSupporters) {
-        return kingWithMaximumSupporters.alliesCount() > kingdoms.size() / 2;
+        return kingWithMaximumSupporters.alliesCount() >= kingdoms.size() / 2;
     }
 
     public Set<Kingdom> whoAreTheAlliesOf(King king) {
         return king.getAllies();
-    }
-
-    public void addKingdom(Kingdom kingdom) {
-        kingdoms.add(kingdom);
     }
 }
