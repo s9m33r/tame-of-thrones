@@ -1,6 +1,7 @@
 # tame-of-thrones
 Solution for problem Tame of Thrones by Geektrust.
 
+###### Note: Please use JDK 8.
 # Tests
     mvn clean test
     
