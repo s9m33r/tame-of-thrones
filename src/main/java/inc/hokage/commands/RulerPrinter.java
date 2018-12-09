@@ -1,6 +1,6 @@
 package inc.hokage.commands;
 
-import inc.hokage.Universe;
+import inc.hokage.model.Universe;
 import inc.hokage.model.King;
 
 import java.util.Optional;

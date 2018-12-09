@@ -1,6 +1,6 @@
 package inc.hokage.commands;
 
-import inc.hokage.Universe;
+import inc.hokage.model.Universe;
 
 @CommandProvider(key = "invalid-handler")
 public class InvalidOptionPrinter implements Command {

@@ -1,6 +1,6 @@
 package inc.hokage.command;
 
-import inc.hokage.Universe;
+import inc.hokage.model.Universe;
 import inc.hokage.commands.RulerPrinter;
 import inc.hokage.model.King;
 import inc.hokage.model.Kingdom;

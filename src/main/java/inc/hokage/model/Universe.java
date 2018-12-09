@@ -1,4 +1,4 @@
-package inc.hokage;
+package inc.hokage.model;
 
 import inc.hokage.model.King;
 import inc.hokage.model.Kingdom;

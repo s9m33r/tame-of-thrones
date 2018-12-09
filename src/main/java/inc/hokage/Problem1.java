@@ -1,6 +1,7 @@
 package inc.hokage;
 
 import inc.hokage.commands.CommandFactory;
+import inc.hokage.model.Universe;
 
 import java.io.IOException;
 import java.util.Scanner;

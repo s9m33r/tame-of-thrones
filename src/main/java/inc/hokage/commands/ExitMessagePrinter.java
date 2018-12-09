@@ -1,6 +1,6 @@
 package inc.hokage.commands;
 
-import inc.hokage.Universe;
+import inc.hokage.model.Universe;
 
 @CommandProvider(key = "4")
 public class ExitMessagePrinter implements Command {

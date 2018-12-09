@@ -1,8 +1,9 @@
-package inc.hokage;
+package inc.hokage.model;
 
 import com.google.common.io.Resources;
 import inc.hokage.model.King;
 import inc.hokage.model.Kingdom;
+import inc.hokage.model.Universe;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
