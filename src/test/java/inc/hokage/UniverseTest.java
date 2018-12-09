@@ -61,4 +61,11 @@ public class UniverseTest {
         assertTrue(alliesOfTheKing.contains(bKingdom));
         assertTrue(alliesOfTheKing.contains(cKingdom));
     }
+
+    @Test
+    public void shouldAddAKingdomToTheUniverse(){
+        Kingdom kingdom = universe.addKingdom("Test Name", "Test Emblem", "Test King Name");
+
+        Assert.assertEquals(kingdom.getName(), "Test Name");
+    }
 }

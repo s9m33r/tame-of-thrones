@@ -9,14 +9,24 @@ public class Universe {
 
     private Set<Kingdom> kingdoms = new HashSet<>();
 
-    public void addKingdom(Kingdom kingdom) {
-        kingdoms.add(kingdom);
-    }
-
     public Optional<Kingdom> getKingdomByName(String name) {
         return kingdoms.stream().
                 filter(kingdom -> kingdom.getName().equalsIgnoreCase(name)).
                 findFirst();
+    }
+
+    public void addKingdom(Kingdom kingdom) {
+        kingdoms.add(kingdom);
+    }
+
+    public Kingdom addKingdom(String name, String emblem, String kingName) {
+        Kingdom kingdom = new Kingdom(name, emblem);
+        King king = new King(kingName, kingdom);
+        kingdom.makeKing(king);
+
+        addKingdom(kingdom);
+
+        return kingdom;
     }
 
     public Optional<King> whoIsTheRuler() {

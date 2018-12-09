@@ -1,0 +1,6 @@
+Space, Gorilla, Shan
+Land, Panda, Max
+Water, Octopus, Jade
+Ice, Mammoth, Minn
+Air, Owl, Shaw
+Fire, Dragon, Hank
