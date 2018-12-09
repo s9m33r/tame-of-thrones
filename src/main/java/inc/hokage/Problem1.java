@@ -38,5 +38,4 @@ public class Problem1 {
 
         return universe;
     }
-
 }

@@ -1,7 +1,6 @@
 package inc.hokage.commands;
 
 import inc.hokage.Universe;
-import inc.hokage.model.King;
 import inc.hokage.model.Kingdom;
 
 import java.util.Optional;
@@ -13,18 +12,20 @@ public class Messenger implements Command {
 
     @Override
     public void run(Universe universe) {
-        King kingShan = universe.getKingdomByName("Space").get().getKing();
-
         System.out.print("Enter message: ");
         String message = scanner.nextLine();
+        System.out.print("From(Name of the Kingdom): ");
+        String fromKingdomName = scanner.nextLine();
         System.out.print("To(Name of the Kingdom): ");
-        String kingdomName = scanner.nextLine();
+        String toKingdomName = scanner.nextLine();
 
-        Optional<Kingdom> kingdom = universe.getKingdomByName(kingdomName);
+        Optional<Kingdom> fromKingdom = universe.getKingdomByName(fromKingdomName);
+        Optional<Kingdom> toKingdom = universe.getKingdomByName(toKingdomName);
 
-        if(kingdom.isPresent()) {
-            System.out.println(String.format("Message sent to %s kingdom!", kingdomName));
-            kingShan.sendAllegianceInvitation(message, kingdom.get());
+        if(fromKingdom.isPresent() && toKingdom.isPresent()) {
+            fromKingdom.get().getKing().sendAllegianceInvitation(message, toKingdom.get());
+            System.out.println(String.format("Message sent from %s to %s kingdom!",
+                    fromKingdomName, toKingdomName));
         } else
             System.out.println("There is no such kingdom");
     }

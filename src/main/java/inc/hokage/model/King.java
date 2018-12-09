@@ -51,4 +51,11 @@ public class King {
     private void setAllegianceWith(Kingdom kingdom) {
         allies.add(kingdom);
     }
+
+    @Override
+    public String toString() {
+        return "King{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
