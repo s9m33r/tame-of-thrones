@@ -56,7 +56,6 @@ public class AlliesPrinterTest {
         King rulingKing = new King("Ruling King", rulingKingdom);
         when(universe.whoIsTheRuler()).thenReturn(Optional.of(rulingKing));
         when(universe.whoAreTheAlliesOf(rulingKing)).thenReturn(allies);
-
         AlliesPrinter alliesPrinter = new AlliesPrinter();
 
         alliesPrinter.run(universe);
