@@ -1,7 +1,7 @@
-package inc.hokage.command;
+package inc.hokage.command.problem1;
 
 import inc.hokage.model.Universe;
-import inc.hokage.commands.MainMenuOptionsPrinter;
+import inc.hokage.commands.problem1.MainMenuOptionsPrinter;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

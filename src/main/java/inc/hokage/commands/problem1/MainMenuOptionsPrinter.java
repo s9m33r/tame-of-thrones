@@ -1,9 +1,11 @@
-package inc.hokage.commands;
+package inc.hokage.commands.problem1;
 
+import inc.hokage.commands.Command;
+import inc.hokage.commands.CommandProvider;
 import inc.hokage.model.Universe;
 
 @CommandProvider(key = "print-options")
-public class MainMenuOptionsPrinter implements Command{
+public class MainMenuOptionsPrinter implements Command {
 
     @Override
     public void run(Universe universe) {
