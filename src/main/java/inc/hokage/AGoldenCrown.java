@@ -6,7 +6,7 @@ import inc.hokage.model.Universe;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Problem1 {
+public class AGoldenCrown {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
